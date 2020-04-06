@@ -1,7 +1,7 @@
 const { User, Food } = require('../models')
 const { compare } = require('../helpers/bcrypt')
 const jwt = require('jsonwebtoken')
-const decoded = require('../helpers/decode')
+const decode = require('../helpers/decode')
 
 class Controller {
   static register(req, res, next) {
@@ -55,7 +55,7 @@ class Controller {
     let userData = decode(req.headers.access_token)
     let UserId = userData.UserId
 
-    let { title, price, ingredients, tag }
+    let { title, price, ingredients, tag } = req.body
     Food.create({
       title,
       price,
